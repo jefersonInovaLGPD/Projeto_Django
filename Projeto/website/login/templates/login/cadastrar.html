@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'login/style.css' %}">
+    <title>Login</title>
+    
+</head>
+<body>
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+          <!-- Tabs Titles -->
+          <a href="{% url 'login' %}"><h2 class="inactive underlineHover">Entrar</h2></a>
+          <h2 class="active">Cadastrar</h2>
+      
+          <!-- Icon -->
+
+      
+          <!-- Login Form -->
+          <form method="POST" action="{% url 'cadastrar' %}">{% csrf_token %}
+            <input type="text" id="Nome" class="fadeIn second" name="nome" placeholder="Nome">
+            <input type="email" id="email" class="fadeIn second" name="email" placeholder="E-mail">
+            <input type="password" id="password" class="fadeIn third" name="password" placeholder="password", pattern="(?=.*\d)(?=.*[A-Z]).{8,}">
+            <input type="submit" class="fadeIn fourth" value="Log In">
+          </form>
+         
+      
+          <!-- Remind Passowrd -->
+          <div id="formFooter">
+            <a class="underlineHover" href="#">Forgot Password?</a>
+          </div>
+      
+        </div>
+        
+      </div>
+      
+</body>
+</html>
