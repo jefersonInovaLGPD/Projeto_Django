@@ -20,5 +20,6 @@ from login import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.login, name='login' ),
-    path('cadastrar', views.cadastrar, name='cadastrar')
+    path('cadastrar', views.cadastrar, name='cadastrar'),
+    path('app', views.app, name='app')
     ]

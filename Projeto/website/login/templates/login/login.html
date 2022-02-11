@@ -16,18 +16,25 @@
           <a href="{% url 'cadastrar' %}"><h2 class="inactive underlineHover">Cadastrar</h2></a>
       
           <!-- Icon -->
+          {% if messages %}
+          {% for m in messages %}
+            <div style="font-size: small; color: green;">
+              {{ m }}
+            </div>
+          {% endfor %}
+          {% endif %}
 
       
           <!-- Login Form -->
           <form method="POST" action="{% url 'login' %}">{% csrf_token %}
-            <input type="text" id="email" class="fadeIn second" name="email" placeholder="E-mail">
-            <input type="password" id="password" class="fadeIn third" name="password" placeholder="password">
-            <input type="submit" class="fadeIn fourth" value="Log In">
+            <input type="text" id="email" class="fadeIn second" name="email" placeholder="E-mail" required="required">
+            <input type="password" id="password" class="fadeIn third" name="password" placeholder="Senha" required=required>
+            <input type="submit" class="fadeIn fourth" value="Entrar">
           </form>
-      
+          
           <!-- Remind Passowrd -->
           <div id="formFooter">
-            <a class="underlineHover" href="#">Forgot Password?</a>
+            <a class="underlineHover" href="#">Esqueceu a senha?</a>
           </div>
       
         </div>
