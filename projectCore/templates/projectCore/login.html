@@ -1,0 +1,34 @@
+{% extends 'projectCore/base_auth.html' %}
+{% block content %}
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+    <h2 class="active">Entrar</h2>
+    <a href="{% url "sign-up" %}"><h2 class="inactive underlineHover">Cadastrar</h2></a>
+
+    <!-- Icon -->
+    {% if messages %}
+    {% for m in messages %}
+      <div style="font-size: small; color: green;">
+        {{ m }}
+      </div>
+    {% endfor %}
+    {% endif %}
+
+
+    <!-- Login Form -->
+    <form method="POST" action="{% url 'login' %}">{% csrf_token %}
+      <input type="text" id="email" class="fadeIn second" name="email" placeholder="E-mail" required="required">
+      <input type="password" id="password" class="fadeIn third" name="password" placeholder="Senha" required=required>
+      <input type="submit" class="fadeIn fourth" value="Entrar">
+    </form>
+    
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" href="#">Esqueceu a senha?</a>
+    </div>
+
+  </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,11 @@
+.body {
+    background: #F5F5F5;
+}
+
+.side-bar-menu{
+    position: absolute;
+    width: 280px;
+    bottom: 0px;
+    background: #152C4B;
+    border-radius: 10px;
+}

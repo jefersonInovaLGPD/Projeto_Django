@@ -1,0 +1,31 @@
+{% extends 'projectCore/base_auth.html' %}
+{% block content %}
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+      <!-- Tabs Titles -->
+      <a href="{% url 'login' %}"><h2 class="inactive underlineHover">Entrar</h2></a>
+      <h2 class="active">Cadastrar</h2>
+  
+      <!-- Icon -->
+      {% if messages %}
+      {% for m in messages %}
+        <div style="font-size: small; color: red;">
+          {{ m }}
+        </div>
+      {% endfor %}
+      {% endif %}
+  
+      <!-- Login Form -->
+      <form method="POST" action="{% url 'sign-up' %}">{% csrf_token %}
+        <input type="text" id="Nome" class="fadeIn second" name="nome" placeholder="Nome" required="required">
+        <input type="text" id="Sobrenome" class="fadeIn second" name="sobrenome" placeholder="Sobrenome" required="required">
+        <input type="email" id="email" class="fadeIn second" name="email" placeholder="E-mail" required="required">
+        <input type="password" id="password" class="fadeIn third" name="password" placeholder="Senha", pattern="(?=.*\d)(?=.*[A-Z]).{8,}" required="required">
+        <div style="font-size: x-small; color: red;">A senha precisa ter ao menos 8 caractéres, 1 letra maiuscúla e 1 número</div>
+        <input type="submit" class="fadeIn fourth" value="Cadastrar">
+      </form>
+      
+    </div>
+    
+  </div>
+  {% endblock content %}   
