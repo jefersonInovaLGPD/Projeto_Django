@@ -1,11 +1,166 @@
-.body {
-    background: #F5F5F5;
+:root{
+    --primary-color: #163359;
+    --primary-dark-color: #102540;
+    --light-color: #F4F5F6;
+    --dark-color: #0D0D0D;
+    --golden-color: #BF935E;
+    --golder-light-color: #F2BE7E;
+    --white-color: #FFF;
+
+
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
 }
 
-.side-bar-menu{
-    position: absolute;
-    width: 280px;
-    bottom: 0px;
-    background: #152C4B;
-    border-radius: 10px;
+html{
+    font-size: 62.5% ;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #F5F5F5;
+    font-size: 1.6rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 2rem;
+    color: var(--primary-dark-color);
+    line-height: 1.5;
+    background: var(--white-color);
+}
+
+h1 {
+    font-size: 3.5rem;
+    text-transform: uppercase;
+}
+h2 {
+    font-size: 3rem;
+}
+h3 {
+    font-size: 2.5rem;
+}
+h4 {
+    font-size: 2rem;
+}
+a{
+    color: var(--white-color);
+    text-decoration: none;
+}
+.main-container{
+    display: grid;
+    grid-template-columns: 30rem 1fr 30rem;
+}
+
+.side-bar{
+    display: grid;
+    grid-template-rows: 10rem 1fr 17rem;
+    max-height: 100vh;
+    width: 25rem;
+    height: 100vh;
+    border-radius: 0 0.8rem 0.8rem 0;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+.side-bar h1{
+    margin: 1rem;
+}
+.side-bar .side-bar-menu{
+    margin-top: 10rem;
+}
+.side-bar .side-bar-menu ul li a{
+    display: block;
+    margin: 0rem 4.5rem 0rem 4.5rem;
+    padding: 0.5rem;
+    color: var(--dark-color);
+    background-color: var(--white-color);
+    border-radius: 1rem;
+    text-align: center;
+}
+
+.side-bar .side-bar-menu ul li{
+    margin-bottom: 1rem;
+}
+
+.side-bar img{
+    margin-left: 6rem;
+}
+
+.user-area{
+    position: fixed;
+    margin-top: 1rem;
+    display: flex;
+    gap: 2rem;
+    left: 85vw;
+}
+
+.customer-area{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin: auto auto;
+    width: 60vw;
+    height: 80vh;
+}
+
+.customer-frame{
+    display: flex;
+    flex-direction: column;
+    width: 12.5vw;
+    height: 35vh;
+    background-color: var(--light-color);
+    border-radius: 1rem;
+    align-items: center;
+    gap: 1.5rem;
+
+
+}
+.customer-logo{
+    width: 10rem;
+    height: 10rem;
+    border-radius: 5rem;
+    background-color: var(--dark-color);
+    margin-top: 1.5rem; 
+}
+
+.customer-name{
+    display: block;
+}
+
+.form-register-customer{
+    margin: 25rem auto;
+    border: 0.2rem solid var(--primary-dark-color);
+    border-radius: 1rem;
+    padding: 2rem;
+    width: max-content;
+    align-items: flex-end;
+}
+
+.form-register-customer div{
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.form-register-customer input{
+    border-radius: 1rem;
+    border: 0.05rem solid;
+    width: 25vw;
+}
+.form-register-customer input[type=file]{
+    border-radius: 0rem;
+    margin-top: 2rem;
+    margin-left: 13rem;
+    width: fit-content;
+}
+
+.form-register-customer input[type=submit]{
+    border-radius: 0rem;
+    margin-top: 2rem;
+    margin-left: 13rem;
 }

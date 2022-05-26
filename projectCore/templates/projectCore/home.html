@@ -1,0 +1,26 @@
+{% extends 'projectCore/app_base.html' %}
+{% load static %}
+{% block content %}
+{% comment %} o começo da nav tá no template base {% endcomment %}
+        <ul>
+            <li><a href={% url 'register-customer' %}>Registrar cliente</a></li>
+            <li><a href="#dashboard">Dashboard</a></li>
+        </ul>
+    </nav>
+    </div>
+    <img src={% static 'projectCore/img/LOGO_OFICIAL.png' %} alt="logo-inovaLGPD" class="logo-inovaLGPD", width="150", height="150">
+</div>
+<div class="customer-area">
+    {% for customer in customers%}
+    <div class="customer-frame">
+        {% if customer.customer_logo %}
+            <img class="customer-logo" src={{customer.customer_logo.url}}/>
+        {% else %}
+            <img class="customer-logo" src={% static 'projectCore/img/LOGO_OFICIAL.png' %}/>
+        {% endif %}
+        <div class="customer-name">{{customer.customer_razao_social}}</div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock content %}

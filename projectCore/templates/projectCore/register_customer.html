@@ -1,0 +1,38 @@
+{% extends 'projectCore/app_base.html' %}
+{% load static %}
+{% block content %}
+
+<ul>
+    <li><a href="#dashboard">Dashboard</a></li>
+</ul>
+</nav>
+</div>
+</div>
+<div class="form-register-customer">
+    <form action="" method="post">{% csrf_token %}
+        <div>
+            <label for="razao_social">Razão Social:</Label>
+            <input type="text" id="razao_social" name="razao_social">
+        </div>
+        <div>
+            <label for="cnpj">CNPJ:</label>
+            <input type="text" id="cnpj" name="cnpj">
+        </div>
+        <div>
+            <label for="fantasy_name">Nome fantasia:</label>
+            <input type="text" name="fantasy_name" id="fantasy_name">
+        </div>
+        <div>
+            <label for="contact_name">Nome do contato:</label>
+            <input type="text" name="contact_name" id="contact_name">
+        </div>
+        <div>
+            <input type="file" name="customer_logo" id="customer_logo">
+        </div>
+        <div>
+            <input type="submit" value="register">
+        </div>
+    </form>
+</div>
+
+{% endblock  %}

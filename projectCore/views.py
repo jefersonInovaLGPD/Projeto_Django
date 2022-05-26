@@ -1,4 +1,3 @@
-from email.header import Header
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.template import loader
@@ -8,7 +7,7 @@ from django.template import RequestContext
 from django.contrib import messages
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
-
+from projectCore.models import Customer
 
 # Create your views here.
 def login_user(request):
@@ -48,4 +47,18 @@ def sign_up_user(request):
 
 @login_required(login_url='/')
 def app(request):
-    return HttpResponse('Rapaz num é que deu certo')
+    username = None
+    if request.user.is_authenticated:
+        username = f"{request.user.first_name} {request.user.last_name}" 
+    customers = Customer.objects.all()
+    context = {
+        'customers':customers,
+        'title':'Home',
+        'username': username
+    }
+
+    return render(request, 'projectCore/home.html', context=context)
+
+@login_required(login_url='/')
+def app_register_customer(request):
+    return render(request, 'projectCore/register_customer.html')
