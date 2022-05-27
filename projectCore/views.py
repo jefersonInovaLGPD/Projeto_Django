@@ -1,3 +1,5 @@
+from multiprocessing import context
+from turtle import title
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.template import loader
@@ -56,9 +58,52 @@ def app(request):
         'title':'Home',
         'username': username
     }
-
     return render(request, 'projectCore/home.html', context=context)
+
 
 @login_required(login_url='/')
 def app_register_customer(request):
-    return render(request, 'projectCore/register_customer.html')
+    username = None
+    if request.user.is_authenticated:
+        username = f"{request.user.first_name} {request.user.last_name}" 
+    context = {
+        'title':'Registrar Cliente', 
+        'username': username
+    }
+    if request.method =='GET':
+        return render(request, 'projectCore/register_customer.html', context=context)
+    else:
+        customer_razao_social = request.POST.get('razao_social')
+        customer_cnpj = request.POST.get('cnpj')
+        customer_fantasy_name = request.POST.get('fantasy_name')
+        customer_contact_name = request.POST.get('contact_name')
+        customer_contact_email = request.POST.get('contact_email')
+        customer_logo = request.POST.get('customer_logo')
+
+        customer = Customer.objects.filter(customer_cnpj=customer_cnpj).first()
+
+        if customer:
+            messages.error(request, f'Cliente {customer.customer_fantasy_name} já cadastrado')
+            return redirect('register-customer')
+        
+        customer = Customer.objects.create(
+            customer_razao_social=customer_razao_social, customer_cnpj=customer_cnpj,
+            customer_fantasy_name=customer_fantasy_name, customer_contact_name=customer_contact_name,
+            customer_contact_email=customer_contact_email, customer_logo=customer_logo
+        )
+        messages.success(request, f'{customer_fantasy_name}, foi cadastrado com sucesso!!')
+        return redirect('register-customer')
+
+@login_required(login_url='/')
+def customer_view(request, id):
+    username = None
+    if request.user.is_authenticated:
+        username = f"{request.user.first_name} {request.user.last_name}"
+    customer = Customer.objects.filter(id=id).first()
+    context = {
+        'title': customer.customer_fantasy_name,
+        'username': username,
+        'customer': customer
+    }
+    return render(request, 'projectCore/customer.html', context)
+

@@ -1,5 +1,5 @@
 from django.urls import path
-from projectCore.views import app_register_customer, login_user, sign_up_user, app
+from projectCore.views import app_register_customer, customer_view, login_user, sign_up_user, app
 
 urlpatterns = [
     path('', login_user, name='login'),
@@ -7,4 +7,5 @@ urlpatterns = [
     path('app', app, name='app'),
     path('login/', login_user, name='login'),
     path('register-customer', app_register_customer, name='register-customer'),
+    path('customer/<slug:id>/', customer_view, name='customer'),
 ]

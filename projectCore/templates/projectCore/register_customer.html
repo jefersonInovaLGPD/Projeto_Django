@@ -27,12 +27,23 @@
             <input type="text" name="contact_name" id="contact_name">
         </div>
         <div>
+            <label for="contact_email">E-mail do contato:</label>
+            <input type="email" name="contact_email" id="contact_email">
+        </div>
+        <div>
             <input type="file" name="customer_logo" id="customer_logo">
         </div>
         <div>
             <input type="submit" value="register">
         </div>
     </form>
+    {% if messages %}
+        {% for m in messages %}
+          <div style="font-size: small; color: red; margin: 0 auto;">
+            {{ m }}
+          </div>
+        {% endfor %}
+        {% endif %}
 </div>
 
 {% endblock  %}

@@ -6,8 +6,6 @@
     --golden-color: #BF935E;
     --golder-light-color: #F2BE7E;
     --white-color: #FFF;
-
-
 }
 * {
     margin: 0;
@@ -37,7 +35,6 @@ body {
 
 h1 {
     font-size: 3.5rem;
-    text-transform: uppercase;
 }
 h2 {
     font-size: 3rem;
@@ -60,7 +57,7 @@ a{
 .side-bar{
     display: grid;
     grid-template-rows: 10rem 1fr 17rem;
-    max-height: 100vh;
+    min-height: 100vh;
     width: 25rem;
     height: 100vh;
     border-radius: 0 0.8rem 0.8rem 0;
@@ -68,7 +65,7 @@ a{
     color: var(--white-color);
 }
 .side-bar h1{
-    margin: 1rem;
+    margin: 1.5rem auto;
 }
 .side-bar .side-bar-menu{
     margin-top: 10rem;
@@ -116,9 +113,8 @@ a{
     border-radius: 1rem;
     align-items: center;
     gap: 1.5rem;
-
-
 }
+ 
 .customer-logo{
     width: 10rem;
     height: 10rem;
@@ -128,15 +124,20 @@ a{
 }
 
 .customer-name{
-    display: block;
+    display: block;  
+}
+
+.customer-frame a{
+    color: var(--primary-color);
 }
 
 .form-register-customer{
-    margin: 25rem auto;
+    margin: 25vh auto;
     border: 0.2rem solid var(--primary-dark-color);
     border-radius: 1rem;
     padding: 2rem;
     width: max-content;
+    height: 40vh;
     align-items: flex-end;
 }
 
@@ -154,8 +155,7 @@ a{
 }
 .form-register-customer input[type=file]{
     border-radius: 0rem;
-    margin-top: 2rem;
-    margin-left: 13rem;
+    margin-right: auto;
     width: fit-content;
 }
 
@@ -163,4 +163,74 @@ a{
     border-radius: 0rem;
     margin-top: 2rem;
     margin-left: 13rem;
+}
+
+/* visão do painel do cliente */
+.customer-logo-detail{
+    position: absolute;
+    margin-top: 5rem;
+    margin-left: 7.5rem;
+    height: 15rem;
+    width: 15rem;
+}
+.customer-container{
+    margin: auto 0;
+    height: 80vh;
+    max-height: 80vh;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-areas:
+    "a b c"
+    "a b c";
+    gap: 1rem;
+    color: var(--white-color);
+}
+
+.customer-status {
+    border-radius: 1rem;
+    height: inherit;
+    background: var(--primary-color);
+    grid-area: a;
+}
+
+.customer-tasks {
+    border-radius: 1rem;
+    height: inherit;
+    background: var(--dark-color);
+    grid-area: b;
+}
+
+.customer-steps{
+    border-radius: 1rem;
+    height: inherit;
+    background: var(--golden-color);
+    grid-area: c;
+}
+
+/*############### seção de média queries #############*/
+@media (max-width: 1000px){
+    .customer-container{
+    margin: auto 0;
+    height: 80vh;
+    max-height: 80vh;
+    max-width: 80vw;
+    width: 80vw;
+    grid-template-areas:
+    "a a"
+    "b b"
+    "c c";
+    gap: 1rem;
+    overflow-y: scroll;
+    }
+}
+
+@media (max-width: 1000px){
+    .customer-area{
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .customer-frame{
+        width: 17.5vw;
+    }
 }

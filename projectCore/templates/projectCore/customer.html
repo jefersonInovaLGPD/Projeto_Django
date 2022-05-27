@@ -1,0 +1,24 @@
+{% extends 'projectCore/app_base.html' %}
+{% load static %}
+{% block content %}
+
+<ul>
+    <li><a href="#dashboard">Dashboard</a></li>
+</ul>
+</nav>
+</div>
+</div>
+<div class="customer-logo-detail">
+    {% if customer.customer_logo %}
+        <img class="customer-logo" src={{customer.customer_logo.url}}/>
+    {% else %}
+        <img class="customer-logo" src={% static 'projectCore/img/LOGO_OFICIAL.png' %}/>
+    {% endif %}
+</div>
+<div class="customer-container">
+    <div class="customer-status">status</div>
+    <div class="customer-tasks">tasks</div>
+    <div class="customer-steps">steps</div>
+</div>
+
+{% endblock %}

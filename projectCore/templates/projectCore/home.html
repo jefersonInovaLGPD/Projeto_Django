@@ -18,7 +18,7 @@
         {% else %}
             <img class="customer-logo" src={% static 'projectCore/img/LOGO_OFICIAL.png' %}/>
         {% endif %}
-        <div class="customer-name">{{customer.customer_razao_social}}</div>
+        <div class="customer-name"><a href="{% url 'customer' customer.id %}">{{customer.customer_razao_social}}</a></div>
     </div>
     {% endfor %}
 </div>
